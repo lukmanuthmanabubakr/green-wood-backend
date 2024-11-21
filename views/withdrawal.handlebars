@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Withdrawal Email</title>
+    <style>
+      body { background-color: rgb(82, 197, 88); padding: 30px; font-family: Arial,
+      Helvetica, sans-serif; } .container { background-color: #0f5132; padding:
+      10px; border-radius: 3px; } .color-primary { color: rgb(227, 255, 227); }
+      .color-danger { color: rgb(91, 211, 91); } .color-success { color: #28a745; }
+      .color-white { color: #0f5132; } .color-blue { color: #0a1930; } a {
+      font-size: 1.4rem; text-decoration: none; } .btn { font-size: 1.4rem;
+      font-weight: 400; padding: 6px 8px; margin: 0 5px 0 0; border: 1px solid
+      transparent; border-radius: 3px; cursor: pointer; } .btn-primary { color:
+      #fff; background: #007bff; } .btn-secondary { color: #fff; border: 1px
+      solid #fff; background: transparent; } .btn-danger { color: #fff;
+      background: orangered; } .btn-success { color: #fff; background: #28a745;
+      } .flex-center { display: flex; justify-content: center; align-items:
+      center; } .logo { padding: 5px; background-color: rgb(227, 255, 227); } .my { margin:
+      2rem 0; }
+      .hello{
+        color: rgb(227, 255, 227);
+      }
+      strong{
+        color: #28a745;
+      }
+      p{
+        color: rgb(227, 255, 227);
+      }
+      a{
+        padding: 10px 30px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo flex-center">
+        <h2 class="color-white">GreenWood</h2>
+      </div>
+      <h2 class="hello">Hello, <span class="color-danger">{{name}}</span></h2>
+      <p>
+        A withdrawal of <strong>${{amount}}</strong> has been processed.
+      </p>
+      <p>
+        <strong>Wallet Address:</strong> {{walletAddress}}
+      </p>
+      <p>
+        You can view the details by clicking the button below:
+      </p>
+      <p>
+        <a class="btn-success" href="{{link}}">View Transaction Details</a>
+      </p>
+    </div>
+  </body>
+</html>

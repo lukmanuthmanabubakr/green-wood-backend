@@ -1,0 +1,60 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investment Confirmation</title>
+    <style>
+      body { background-color: rgb(82, 197, 88); padding: 30px; font-family:
+      Arial, Helvetica, sans-serif; } .container { background-color: #0f5132;
+      padding: 10px; border-radius: 3px; } .color-primary { color: rgb(227, 255,
+      227); } .color-danger { color: rgb(91, 211, 91); } .color-success { color:
+      #28a745; } .color-white { color: #0f5132; } .color-blue { color: #0a1930;
+      } a { font-size: 1.4rem; text-decoration: none; } .btn { font-size:
+      1.4rem; font-weight: 400; padding: 6px 8px; margin: 0 5px 0 0; border: 1px
+      solid transparent; border-radius: 3px; cursor: pointer; } .btn-primary {
+      color: #fff; background: #007bff; } .btn-secondary { color: #fff; border:
+      1px solid #fff; background: transparent; } .btn-danger { color: #fff;
+      background: orangered; } .btn-success { color: #fff; background: #28a745;
+      } .flex-center { display: flex; justify-content: center; align-items:
+      center; } .logo { padding: 5px; background-color: rgb(227, 255, 227); }
+      .my { margin: 2rem 0; } .hello{ color: rgb(227, 255, 227); } .ine{ color:
+      rgb(227, 255, 227); } p,li{ color: rgb(227, 255, 227); }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo flex-center">
+        <h2 class="color-white">GreenWood</h2>
+      </div>
+      <h2 class="hello">Hello <span class="color-danger">{{name}}</span></h2>
+      <p>Thank you for investing with us! Your investment details are as
+        follows:</p>
+      <ul>
+        <li><strong>Plan:</strong>
+          <span class="color-danger">{{plan}}</span></li>
+        <li><strong>Amount Invested:</strong>
+          <span class="color-danger">${{amount}}</span></li>
+        <li><strong>Investment Start Date:</strong>
+          <span class="color-danger">{{startDate}}</span></li>
+        <li><strong>Plan Duration:</strong>
+          <span class="color-danger">{{investmentDurationDays}}</span>
+          days</li>
+        <li><strong>Investment Profit Date:</strong>
+          <span class="color-danger">{{maturityDate}}</span></li>
+        <li><strong>Profit Amount (including interest):</strong>
+          <span class="color-danger">${{maturityAmount}}</span></li>
+      </ul>
+      <p>Your investment has been successfully recorded, and the amount has been
+        deducted from your general balance.</p>
+      <p>You can view more details about your investment by clicking the button
+        below:</p>
+      <a href="{{link}}" class="btn btn-success">View Investment</a>
+      <p>Thank you for choosing our investment platform!</p>
+      <div class="my">
+        <p>Regards...</p>
+        <p><b class="color-danger">GreenWood</b> Team</p>
+      </div>
+    </div>
+  </body>
+</html>
