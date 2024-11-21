@@ -7,7 +7,6 @@ const cookieParser = require("cookie-parser");
 const userRoute = require('./routes/userRoute');
 const paymentRoutes = require('./routes/paymentRoutes');
 const investmentRoutes = require('./routes/investmentRoutes');
-const uploadRoutes = require('./routes/uploadRoutes');
 const withDrawRoutes = require('./routes/withdrawRoutes');
 const errorHandler = require('./middleware/errorMiddleware');
 const seedPlans = require('./utils/seedInvestmentPlans');
@@ -31,7 +30,6 @@ app.use(
 app.use("/api/users", userRoute);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/invest", investmentRoutes);
-app.use("/api/upload", uploadRoutes);
 app.use("/api/withDraw", withDrawRoutes);
 
 
