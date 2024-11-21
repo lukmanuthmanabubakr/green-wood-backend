@@ -439,7 +439,7 @@ const sendVerificationEmail = asyncHandler(async (req, res) => {
     expiresAt: Date.now() + 60 * (60 * 1000), // 60mins
   }).save();
 
-  // Construct Verification URL
+  // Construct Verificat URL
   const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
 
   // Send Email
