@@ -71,7 +71,7 @@ const registerUser = asyncHandler(async (req, res) => {
   res.cookie("token", token, {
     path: "/",
     httpOnly: true,
-    expires: new Date(Date.now() + 1000 * 86400), // 1 day
+    // expires: new Date(Date.now() + 1000 * 86400),
     sameSite: "none",
     secure: true,
   });
@@ -174,7 +174,7 @@ const loginUser = asyncHandler(async (req, res) => {
       userId: user._id,
       lToken: encryptedLoginCode,
       createdAt: Date.now(),
-      expiresAt: Date.now() + 60 * (60 * 1000), // just 60mins
+      // expiresAt: Date.now() + 60 * (60 * 1000), 
     }).save();
 
     res.status(400);
@@ -189,7 +189,7 @@ const loginUser = asyncHandler(async (req, res) => {
     res.cookie("token", token, {
       path: "/",
       httpOnly: true,
-      expires: new Date(Date.now() + 1000 * 86400), // 1 day
+      // expires: new Date(Date.now() + 1000 * 86400),
       sameSite: "none",
       secure: true,
     });
@@ -229,7 +229,7 @@ const logoutUser = asyncHandler(async (req, res) => {
   res.cookie("token", "", {
     path: "/",
     httpOnly: true,
-    expires: new Date(0), // 1 day
+    // expires: new Date(0),
     sameSite: "none",
     secure: true,
   });
@@ -436,7 +436,7 @@ const sendVerificationEmail = asyncHandler(async (req, res) => {
     userId: user._id,
     vToken: hashedToken,
     createdAt: Date.now(),
-    expiresAt: Date.now() + 60 * (60 * 1000), // 60mins
+    // expiresAt: Date.now() + 60 * (60 * 1000), 
   }).save();
 
   // Construct Verificat URL
@@ -526,7 +526,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
     userId: user._id,
     rToken: hashedToken,
     createdAt: Date.now(),
-    expiresAt: Date.now() + 60 * (60 * 1000), // 60mins
+    // expiresAt: Date.now() + 60 * (60 * 1000),
   }).save();
 
   // Construct Reset URL
@@ -711,7 +711,7 @@ const loginWithCode = asyncHandler(async (req, res) => {
     res.cookie("token", token, {
       path: "/",
       httpOnly: true,
-      expires: new Date(Date.now() + 1000 * 86400), // 1 day
+      // expires: new Date(Date.now() + 1000 * 86400),
       sameSite: "none",
       secure: true,
     });
@@ -773,7 +773,7 @@ const loginWithGoogle = asyncHandler(async (req, res) => {
       res.cookie("token", token, {
         path: "/",
         httpOnly: true,
-        expires: new Date(Date.now() + 1000 * 86400), // 1 day
+        // expires: new Date(Date.now() + 1000 * 86400),
         sameSite: "none",
         secure: true,
       });
@@ -802,7 +802,7 @@ const loginWithGoogle = asyncHandler(async (req, res) => {
     res.cookie("token", token, {
       path: "/",
       httpOnly: true,
-      expires: new Date(Date.now() + 1000 * 86400), // 1 day
+      // expires: new Date(Date.now() + 1000 * 86400),
       sameSite: "none",
       secure: true,
     });
