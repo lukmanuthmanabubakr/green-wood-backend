@@ -45,12 +45,12 @@ const PORT = process.env.PORT || 8000;
 
 // Connect to database and seed plans
 mongoose.connect(process.env.MONGO_DB_URL).then(async () => {
-  // console.log("Database connected");
+  console.log("Database connected");
 
   // Seed investment plans if they don't exist
   await seedPlans();
 
   app.listen(PORT, () => {
-    // console.log(`Server running on ${PORT}`);
+    console.log(`Server running on ${PORT}`);
   });
 }).catch((err) => console.error("Database connection error:", err));

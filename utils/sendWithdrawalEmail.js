@@ -69,10 +69,6 @@
 
 // module.exports = sendWithdrawalEmail;
 
-
-
-
-
 const nodemailer = require("nodemailer");
 const path = require("path");
 
@@ -95,8 +91,7 @@ const sendWithdrawalEmail = async (
   // Create Email Transporter
   const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
-    port: 587,
-    secure: true,
+    port: 465,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
@@ -131,7 +126,7 @@ const sendWithdrawalEmail = async (
       walletAddress, // Pass walletAddress to the context
       transactionId,
       withdrawalDate,
-      link
+      link,
     },
   };
 
