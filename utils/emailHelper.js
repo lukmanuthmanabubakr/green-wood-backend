@@ -27,7 +27,7 @@ const sendEmailWithAttachment = async ({ to, subject, text, attachmentPath, atta
       ],
     });
 
-    console.log("Email sent successfully!");
+    // console.log("Email sent successfully!");
   } catch (error) {
     console.error("Error sending email:", error);
     throw error;

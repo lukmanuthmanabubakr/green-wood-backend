@@ -152,13 +152,13 @@ const loginUser = asyncHandler(async (req, res) => {
   // Trgger 2FA for unknow UserAgent
   const ua = parser(req.headers["user-agent"]);
   const thisUserAgent = ua.ua;
-  console.log(thisUserAgent);
+  // console.log(thisUserAgent);
   const allowedAgent = user.userAgent.includes(thisUserAgent);
 
   if (!allowedAgent) {
     // Genrate 6 digit code
     const loginCode = Math.floor(100000 + Math.random() * 900000);
-    console.log(loginCode);
+    // console.log(loginCode);
 
     // Encrypt login code before saving to DB
     const encryptedLoginCode = cryptr.encrypt(loginCode.toString());
@@ -427,7 +427,7 @@ const sendVerificationEmail = asyncHandler(async (req, res) => {
 
   //   Create Verification Token and Save
   const verificationToken = crypto.randomBytes(32).toString("hex") + user._id;
-  console.log(verificationToken);
+  // console.log(verificationToken);
   // res.send('Token')
 
   // Hash token and save
@@ -518,7 +518,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
 
   //   Create Verification Token and Save
   const resetToken = crypto.randomBytes(32).toString("hex") + user._id;
-  console.log(resetToken);
+  // console.log(resetToken);
 
   // Hash token and save
   const hashedToken = hashToken(resetToken);
@@ -734,7 +734,7 @@ const loginWithCode = asyncHandler(async (req, res) => {
 
 const loginWithGoogle = asyncHandler(async (req, res) => {
   const { userToken } = req.body;
-  console.log(userToken);
+  // console.log(userToken);
 
   const ticket = await client.verifyIdToken({
     idToken: userToken,
@@ -742,7 +742,7 @@ const loginWithGoogle = asyncHandler(async (req, res) => {
   });
 
   const payload = ticket.getPayload();
-  console.log(payload);
+  // console.log(payload);
 
   const { name, email, picture, sub } = payload;
   const password = Date.now() + sub;

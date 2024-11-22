@@ -53,14 +53,14 @@ const seedPlans = async () => {
       const existingPlan = await InvestmentPlan.findOne({ name: plan.name });
       if (!existingPlan) {
         await InvestmentPlan.create(plan);
-        console.log(`Added plan: ${plan.name}`);
+        // console.log(`Added plan: ${plan.name}`);
       } else {
-        console.log(`Plan ${plan.name} already exists`);
+        // console.log(`Plan ${plan.name} already exists`);
       }
     }
-    console.log("Investment plans seeded successfully!");
+    // console.log("Investment plans seeded successfully!");
   } catch (error) {
-    console.error("Error seeding investment plans:", error);
+    // console.error("Error seeding investment plans:", error);
   }
 };
 

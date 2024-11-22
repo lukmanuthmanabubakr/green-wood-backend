@@ -60,7 +60,7 @@ const startInvestment = asyncHandler(async (req, res) => {
 
   // Add maturity amount to user's total maturity
   user.totalMaturityAmount = (user.totalMaturityAmount || 0) + maturityAmount;
-  console.log("Updated totalMaturityAmount:", user.totalMaturityAmount);
+  // console.log("Updated totalMaturityAmount:", user.totalMaturityAmount);
 
   await user.save();
 
