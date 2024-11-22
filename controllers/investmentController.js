@@ -55,8 +55,8 @@ const startInvestment = asyncHandler(async (req, res) => {
   const maturityAmount = parseFloat((amount * (1 + interestRate)).toFixed(2));
   const durationInDays = plan.durationDays;
   const endDate = new Date();
-  // endDate.setDate(endDate.getDate() + durationInDays);
-  endDate.setTime(endDate.getTime() + 60 * 1000);
+  endDate.setDate(endDate.getDate() + durationInDays);
+  // endDate.setTime(endDate.getTime() + 60 * 1000);
 
   // Add maturity amount to user's total maturity
   user.totalMaturityAmount = (user.totalMaturityAmount || 0) + maturityAmount;
