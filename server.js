@@ -83,7 +83,7 @@ const seedPlans = require('./utils/seedInvestmentPlans');
 const app = express();
 
 // Middlewares
-app.set("trust proxy", 1); // Trust proxies for secure cookies
+app.set("trust proxy", 1); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -91,7 +91,8 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://www.greenwoodsy.com"],
+    origin: 'https://www.greenwoodsy.com',
+    // origin: ["http://localhost:3000", "https://www.greenwoodsy.com"],
     credentials: true,
   })
 );
