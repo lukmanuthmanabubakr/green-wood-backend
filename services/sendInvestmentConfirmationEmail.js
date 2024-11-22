@@ -1,24 +1,19 @@
 const nodemailer = require("nodemailer");
 const path = require("path");
 
-const sendInvestmentConfirmationEmail = async (
-  user,
-  investment,
-  durationDays
-) => {
-  const subject = "Investment Confirmation - Your Investment Details";
+const sendInvestmentConfirmationEmail = async (user, investment, durationDays) => {
+  const subject = 'Investment Confirmation - Your Investment Details';
   const send_to = user.email;
   const sent_from = process.env.EMAIL_USER;
-  const reply_to = "noreply@yourdomain.com";
-  const template = "investmentConfirmation";
+  const reply_to = 'noreply@yourdomain.com';
+  const template = 'investmentConfirmation';
 
   // Ensure valid dates and calculate days to maturity
   const startDate = new Date(investment.startDate);
   const endDate = new Date(investment.endDate);
   const maturityDate = endDate.toLocaleDateString("en-US");
   const maturityAmount = investment.maturityAmount.toFixed(2);
-  const investmentDurationDays =
-    durationDays || Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+  const investmentDurationDays = durationDays || Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
 
   const hbs = (await import("nodemailer-express-handlebars")).default;
 
@@ -36,18 +31,15 @@ const sendInvestmentConfirmationEmail = async (
   });
 
   // Configure handlebars for templates
-  transporter.use(
-    "compile",
-    hbs({
-      viewEngine: {
-        extName: ".handlebars",
-        partialsDir: path.resolve("./views"),
-        defaultLayout: false,
-      },
-      viewPath: path.resolve("./views"),
+  transporter.use("compile", hbs({
+    viewEngine: {
       extName: ".handlebars",
-    })
-  );
+      partialsDir: path.resolve("./views"),
+      defaultLayout: false,
+    },
+    viewPath: path.resolve("./views"),
+    extName: ".handlebars",
+  }));
 
   // Email options
   const options = {
@@ -64,7 +56,7 @@ const sendInvestmentConfirmationEmail = async (
       startDate: startDate.toLocaleDateString("en-US"),
       investmentDurationDays, // total days for clarity
       maturityDate,
-      maturityAmount,
+      maturityAmount
     },
   };
 
@@ -73,7 +65,7 @@ const sendInvestmentConfirmationEmail = async (
     if (err) {
       console.error("Error sending email:", err);
     } else {
-      // console.log("Email sent successfully:", info.response);
+      console.log("Email sent successfully:", info.response);
     }
   });
 };

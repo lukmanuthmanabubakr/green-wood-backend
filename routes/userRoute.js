@@ -25,6 +25,7 @@ const {
   protect,
   adminOnly,
   authorOnly,
+  verifiedOnly,
 } = require("../middleware/authMiddleware");
 const router = express.Router();
 
@@ -45,7 +46,7 @@ router.patch("/resetPassword/:resetToken", resetPassword);
 router.patch("/changePassword", protect, changePassword);
 router.post("/sendLoginCode/:email", sendLoginCode);
 router.post("/loginWithCode/:email", loginWithCode);
-router.get("/dashboard", protect, getUserTransactions);
+router.get("/dashboard", protect, verifiedOnly, getUserTransactions);
 router.get("/referrals", protect, getReferrals);
 
 

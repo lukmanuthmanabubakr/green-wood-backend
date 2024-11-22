@@ -9,10 +9,10 @@ const {
 
 
 // Route to create a transaction (user submits a payment)
-router.post("/create", protect, createTransaction);
+router.post("/create", protect, verifiedOnly, createTransaction);
 
 // Route to confirm a payment (admin confirms payment)
-router.patch("/confirmPayment", protect, adminOnly, confirmPayment);
+router.patch("/confirmPayment", protect, verifiedOnly, adminOnly, confirmPayment);
 router.get("/viewPaymentStatus/:transactionId", protect, adminOnly, viewPaymentStatus);
 
 

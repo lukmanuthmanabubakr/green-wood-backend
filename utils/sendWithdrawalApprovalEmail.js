@@ -56,7 +56,7 @@ const sendWithdrawalApprovalEmail = async (
   // Send Email
   try {
     const info = await transporter.sendMail(options);
-    // console.log("Withdrawal approval email sent successfully:", info.response);
+    console.log("Withdrawal approval email sent successfully:", info.response);
   } catch (err) {
     console.error("Error sending withdrawal approval email:", err);
     throw new Error("Failed to send withdrawal approval email.");

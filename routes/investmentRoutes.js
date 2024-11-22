@@ -14,20 +14,22 @@ const router = express.Router();
 
 
 // Route to start an investment
-router.post("/start-invest", protect, startInvestment);
+router.post("/start-invest", protect, verifiedOnly, startInvestment);
 router.get(
   "/total-investment",
   protect,
+  verifiedOnly,
   getTotalInvestmentAmount
 );
 // router.get("/investment-history", protect, verifiedOnly, investmentHistory);
 router.get(
   "/investment-history",
   protect,
+  verifiedOnly,
   investmentHistory
 );
-router.get("/deposit-maturity", protect, checkAndDepositMaturityAmounts);
-router.get("/getTransactionHistory", protect, getTransactionHistory);
+router.get("/deposit-maturity", protect, verifiedOnly, checkAndDepositMaturityAmounts);
+router.get("/getTransactionHistory", protect, verifiedOnly, getTransactionHistory);
 
 
 

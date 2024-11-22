@@ -69,6 +69,10 @@
 
 // module.exports = sendWithdrawalEmail;
 
+
+
+
+
 const nodemailer = require("nodemailer");
 const path = require("path");
 
@@ -126,14 +130,14 @@ const sendWithdrawalEmail = async (
       walletAddress, // Pass walletAddress to the context
       transactionId,
       withdrawalDate,
-      link,
+      link
     },
   };
 
   // Send Email
   try {
     const info = await transporter.sendMail(options);
-    // console.log("Withdrawal email sent successfully:", info.response);
+    console.log("Withdrawal email sent successfully:", info.response);
   } catch (err) {
     console.error("Error sending withdrawal email:", err);
     throw new Error("Failed to send withdrawal email.");

@@ -8,42 +8,42 @@ const seedPlans = async () => {
       name: "Starter Plan",
       minAmount: 100,
       maxAmount: 500,
-      durationDays: 1,
+      durationDays: 5,
       interestRate: 10,
     },
     {
       name: "Bronze Plan",
       minAmount: 500,
       maxAmount: 1500,
-      durationDays: 3,
+      durationDays: 7,
       interestRate: 12,
     },
     {
       name: "Silver Plan",
-      minAmount: 1500,
+      minAmount: 2000,
       maxAmount: 5000,
-      durationDays: 5,
+      durationDays: 9,
       interestRate: 15,
     },
     {
       name: "Gold Plan",
       minAmount: 5000,
       maxAmount: 10000,
-      durationDays: 7,
+      durationDays: 11,
       interestRate: 18,
     },
     {
       name: "Diamond Plan",
       minAmount: 10000,
       maxAmount: 50000,
-      durationDays: 9,
+      durationDays: 13,
       interestRate: 20,
     },
     {
       name: "Platinum Plan",
       minAmount: 50000,
       maxAmount: 100000,
-      durationDays: 11,
+      durationDays: 15,
       interestRate: 25,
     },
   ];
@@ -53,14 +53,14 @@ const seedPlans = async () => {
       const existingPlan = await InvestmentPlan.findOne({ name: plan.name });
       if (!existingPlan) {
         await InvestmentPlan.create(plan);
-        // console.log(`Added plan: ${plan.name}`);
+        console.log(`Added plan: ${plan.name}`);
       } else {
-        // console.log(`Plan ${plan.name} already exists`);
+        console.log(`Plan ${plan.name} already exists`);
       }
     }
-    // console.log("Investment plans seeded successfully!");
+    console.log("Investment plans seeded successfully!");
   } catch (error) {
-    // console.error("Error seeding investment plans:", error);
+    console.error("Error seeding investment plans:", error);
   }
 };
 

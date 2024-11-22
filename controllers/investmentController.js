@@ -24,9 +24,9 @@ const startInvestment = asyncHandler(async (req, res) => {
 
   // Find the user
   const user = await User.findById(userId);
-  // if (!user || !user.isVerified) {
-  //   return res.status(403).json({ message: "User is not verified." });
-  // }
+  if (!user || !user.isVerified) {
+    return res.status(403).json({ message: "User is not verified." });
+  }
 
   // Check if user has enough balance
   if (user.balance < amount) {
@@ -55,12 +55,12 @@ const startInvestment = asyncHandler(async (req, res) => {
   const maturityAmount = parseFloat((amount * (1 + interestRate)).toFixed(2));
   const durationInDays = plan.durationDays;
   const endDate = new Date();
-  endDate.setDate(endDate.getDate() + durationInDays);
-  // endDate.setTime(endDate.getTime() + 60 * 1000);
+  // endDate.setDate(endDate.getDate() + durationInDays);
+  endDate.setTime(endDate.getTime() + 60 * 1000);
 
   // Add maturity amount to user's total maturity
   user.totalMaturityAmount = (user.totalMaturityAmount || 0) + maturityAmount;
-  // console.log("Updated totalMaturityAmount:", user.totalMaturityAmount);
+  console.log("Updated totalMaturityAmount:", user.totalMaturityAmount);
 
   await user.save();
 
