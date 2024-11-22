@@ -73,7 +73,9 @@ const registerUser = asyncHandler(async (req, res) => {
     httpOnly: true,
     // expires: new Date(Date.now() + 1000 * 86400),
     sameSite: "none",
-    secure: true,
+    // secure: true,
+    secure: process.env.NODE_ENV === "production",
+
   });
 
   if (user) {
@@ -191,7 +193,9 @@ const loginUser = asyncHandler(async (req, res) => {
       httpOnly: true,
       // expires: new Date(Date.now() + 1000 * 86400),
       sameSite: "none",
-      secure: true,
+      // secure: true,
+      secure: process.env.NODE_ENV === "production",
+
     });
 
     const {
@@ -231,7 +235,9 @@ const logoutUser = asyncHandler(async (req, res) => {
     httpOnly: true,
     // expires: new Date(0),
     sameSite: "none",
-    secure: true,
+    // secure: true,
+    secure: process.env.NODE_ENV === "production",
+
   });
   return res.status(200).json({ message: "Logout successful" });
 });
@@ -713,7 +719,9 @@ const loginWithCode = asyncHandler(async (req, res) => {
       httpOnly: true,
       // expires: new Date(Date.now() + 1000 * 86400),
       sameSite: "none",
-      secure: true,
+      // secure: true,
+      secure: process.env.NODE_ENV === "production",
+
     });
 
     const { _id, name, email, phone, bio, photo, role, isVerified } = user;
@@ -775,7 +783,9 @@ const loginWithGoogle = asyncHandler(async (req, res) => {
         httpOnly: true,
         // expires: new Date(Date.now() + 1000 * 86400),
         sameSite: "none",
-        secure: true,
+        // secure: true,
+        secure: process.env.NODE_ENV === "production",
+
       });
 
       const { _id, name, email, phone, bio, photo, role, isVerified } = newUser;
@@ -804,7 +814,8 @@ const loginWithGoogle = asyncHandler(async (req, res) => {
       httpOnly: true,
       // expires: new Date(Date.now() + 1000 * 86400),
       sameSite: "none",
-      secure: true,
+      // secure: true,
+      secure: process.env.NODE_ENV === "production",
     });
 
     const { _id, name, email, phone, bio, photo, role, isVerified } = user;
