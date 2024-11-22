@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: 'https://www.greenwoodsy.com',
+    origin: ["http://localhost:3000", "https://www.greenwoodsy.com"],
     credentials: true,
   })
 );
