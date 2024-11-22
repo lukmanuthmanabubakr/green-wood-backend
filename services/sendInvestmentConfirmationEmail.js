@@ -20,7 +20,7 @@ const sendInvestmentConfirmationEmail = async (user, investment, durationDays) =
   // Create transporter
   const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
-    port: 465,
+    port: 587,
     secure: true,
     auth: {
       user: process.env.EMAIL_USER,
