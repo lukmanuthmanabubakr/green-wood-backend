@@ -15,12 +15,11 @@ const {
 const router = express.Router();
 
 // Route to create a withdrawal request
-router.post("/create", protect, verifiedOnly, createWithdrawalRequest);
+router.post("/create", protect, createWithdrawalRequest);
 
 router.get(
   "/get-withdrawal/:id",
   protect,
-  verifiedOnly,
   adminOnly,
   getWithdrawalById
 );

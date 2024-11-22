@@ -24,9 +24,9 @@ const startInvestment = asyncHandler(async (req, res) => {
 
   // Find the user
   const user = await User.findById(userId);
-  if (!user || !user.isVerified) {
-    return res.status(403).json({ message: "User is not verified." });
-  }
+  // if (!user || !user.isVerified) {
+  //   return res.status(403).json({ message: "User is not verified." });
+  // }
 
   // Check if user has enough balance
   if (user.balance < amount) {
