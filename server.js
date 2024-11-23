@@ -20,14 +20,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(bodyParser.json());
 
-// app.use(
-//   cors({
-//     origin: 'https://www.greenwoodsy.com',
-//     // origin: ["http://localhost:3000", "https://www.greenwoodsy.com"],
-//     credentials: true,
-//   })
-// );
-app.use(cors({ origin: 'https://www.greenwoodsy.com', credentials: true }));
+app.use(
+  cors({
+    // origin: 'https://www.greenwoodsy.com',
+    origin: ["http://localhost:3000", "https://www.greenwoodsy.com"],
+    credentials: true,
+  })
+);
+// app.use(cors({ origin: 'https://www.greenwoodsy.com', credentials: true }));
 
 
 // Routes
