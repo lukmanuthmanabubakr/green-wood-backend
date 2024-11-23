@@ -9,6 +9,8 @@ const Token = require("../models/tokenModel");
 const crypto = require("crypto");
 const Cryptr = require("cryptr");
 
+// const cryptr = new Cryptr(process.env.CRYPTR_KEY);
+
 const cryptr = new Cryptr(process.env.CRYPTR_KEY);
 
 const generateReferralCode = (userId) => {
