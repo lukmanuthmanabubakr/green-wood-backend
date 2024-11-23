@@ -22,8 +22,9 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    // origin: 'https://www.greenwoodsy.com',
-    origin: ["http://localhost:3000", "https://www.greenwoodsy.com", "https://api.greenwoodsy.com"],
+    origin: 'https://www.greenwoodsy.com',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    // origin: ["http://localhost:3000",],
     credentials: true,
   })
 );
