@@ -418,8 +418,7 @@ const sendVerificationEmail = asyncHandler(async (req, res) => {
 
   if (user.isVerified) {
     res.status(400);
-    // throw new Error("User already verified");
-    // throw new Error("User already verified");
+    throw new Error("User already verified");
   }
 
   // Delete Token if it exists in DB
@@ -464,7 +463,7 @@ const sendVerificationEmail = asyncHandler(async (req, res) => {
       name,
       link
     );
-    // res.status(200).json({ message: "Verification Email Sent" });
+    res.status(200).json({ message: "Verification Email Sent" });
   } catch (error) {
     res.status(500);
     throw new Error("Email not sent, please try again");
