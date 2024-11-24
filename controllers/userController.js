@@ -427,7 +427,7 @@ const sendVerificationEmail = asyncHandler(async (req, res) => {
     await token.deleteOne();
   }
 
-  //   Create Verification Token and Save
+  //   Create Verification Token and Saved
   const verificationToken = crypto.randomBytes(32).toString("hex") + user._id;
   console.log(verificationToken);
   // res.send('Token')
