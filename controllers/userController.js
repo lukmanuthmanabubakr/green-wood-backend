@@ -417,8 +417,9 @@ const sendVerificationEmail = asyncHandler(async (req, res) => {
   }
 
   if (user.isVerified) {
-    res.status(400);
-    throw new Error("User already verified");
+    // res.status(400);
+    // throw new Error("User already verified");
+    res.status(200).json({ message: "Account Verification Successful" });
   }
 
   // Delete Token if it exists in DB
@@ -490,8 +491,9 @@ const verifyUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ _id: userToken.userId });
 
   if (user.isVerified) {
-    res.status(400);
-    throw new Error("User is already verified");
+    // res.status(400);
+    // throw new Error("User is already verified");
+    res.status(200).json({ message: "Account Verification Successful" });
   }
 
   // Now verify user
