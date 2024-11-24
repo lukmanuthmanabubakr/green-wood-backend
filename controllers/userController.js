@@ -51,7 +51,7 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password,
     userAgent,
-    balance: 10,
+    balance: 5,
     referralCode: generateReferralCode(email),
   });
 
