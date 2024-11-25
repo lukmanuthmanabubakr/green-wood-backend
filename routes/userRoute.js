@@ -20,6 +20,7 @@ const {
   loginWithGoogle,
   getUserTransactions,
   getReferrals,
+  updateDepositBalance,
 } = require("../controllers/userController");
 const {
   protect,
@@ -48,6 +49,8 @@ router.post("/sendLoginCode/:email", sendLoginCode);
 router.post("/loginWithCode/:email", loginWithCode);
 router.get("/dashboard", protect, verifiedOnly, getUserTransactions);
 router.get("/referrals", protect, getReferrals);
+//For admin to be able to edit user investmentbalance 
+router.put("/updateDepositBalance/:id", protect, authorOnly, updateDepositBalance);
 
 
 

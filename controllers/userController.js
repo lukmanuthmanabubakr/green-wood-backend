@@ -847,6 +847,37 @@ const getUserTransactions = async (req, res) => {
   }
 };
 
+const updateDepositBalance = async (req, res) => {
+  const { id } = req.params; // User ID
+  const { operation, amount } = req.body;
+
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Ensure balance is a number
+    user.balance = Number(user.balance);
+
+    if (operation === "add") {
+      user.balance += Number(amount);
+    } else if (operation === "deduct") {
+      if (user.balance < amount) {
+        return res.status(400).json({ message: "Insufficient balance" });
+      }
+      user.balance -= Number(amount);
+    } else {
+      return res.status(400).json({ message: "Invalid operation" });
+    }
+
+    await user.save();
+    res.json({ message: "Balance updated successfully", updatedUser: user });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   registerUser,
   loginUser,
@@ -868,6 +899,7 @@ module.exports = {
   loginWithGoogle,
   getUserTransactions,
   getReferrals,
+  updateDepositBalance,
 };
 
 // res.send('Log out user')
