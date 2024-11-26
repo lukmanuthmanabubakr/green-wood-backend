@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { createTransaction, confirmPayment, viewPaymentStatus } = require("../controllers/paymentController");
+const { createTransaction, confirmPayment, viewPaymentStatus, getPendingTransactions } = require("../controllers/paymentController");
 const {
     protect,
     adminOnly,
@@ -14,6 +14,8 @@ router.post("/create", protect, verifiedOnly, createTransaction);
 // Route to confirm a payment (admin confirms payment)
 router.patch("/confirmPayment", protect, verifiedOnly, adminOnly, confirmPayment);
 router.get("/viewPaymentStatus/:transactionId", protect, adminOnly, viewPaymentStatus);
+router.get("/pending-deposit", protect, adminOnly, getPendingTransactions);
+
 
 
 module.exports = router;

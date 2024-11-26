@@ -57,6 +57,22 @@ const createTransaction = asyncHandler(async (req, res) => {
   }
 });
 
+const getPendingTransactions = asyncHandler(async (req, res) => {
+  try {
+    const pendingDeposit = await Transaction.find({
+      status: "Pending",
+    }).populate("user", "name email");
+    res
+      .status(200)
+      .json({
+        message: "Pending Deposit fetched successfully.",
+        deposit: pendingDeposit,
+      });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch pending withdrawals." });
+  }
+});
+
 
 const confirmPayment = asyncHandler(async (req, res) => {
   try {
@@ -179,18 +195,9 @@ const viewPaymentStatus = asyncHandler(async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
 module.exports = {
   createTransaction, // User creates transactions
   confirmPayment, 
   viewPaymentStatus,
+  getPendingTransactions
 };
