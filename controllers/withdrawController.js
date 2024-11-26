@@ -17,12 +17,12 @@ const createWithdrawalRequest = asyncHandler(async (req, res) => {
 
   // Find the user and check balance
   const user = await User.findById(userId);
-  if (!user || user.balance < amount) {
+  if (!user || user.totalMaturityAmount < amount) {
     return res.status(400).json({ message: "Insufficient balance." });
   }
 
   // Deduct the amount from the user's balance (set as pending)
-  user.balance -= amount;
+  user.totalMaturityAmount -= amount;
   await user.save();
 
   // Create the withdrawal request

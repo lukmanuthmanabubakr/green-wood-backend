@@ -59,8 +59,8 @@ const startInvestment = asyncHandler(async (req, res) => {
   // endDate.setTime(endDate.getTime() + 60 * 1000);
 
   // Add maturity amount to user's total maturity
-  user.totalMaturityAmount = (user.totalMaturityAmount || 0) + maturityAmount;
-  console.log("Updated totalMaturityAmount:", user.totalMaturityAmount);
+  // user.totalMaturityAmount = (user.totalMaturityAmount || 0) + maturityAmount;
+  // console.log("Updated totalMaturityAmount:", user.totalMaturityAmount);
 
   await user.save();
 
@@ -159,7 +159,7 @@ const checkAndDepositMaturityAmounts = asyncHandler(async (req, res) => {
   for (const investment of investments) {
     if (now >= investment.endDate) {
       // Deposit the maturity amount into user's balance
-      user.balance += investment.maturityAmount;
+      user.totalMaturityAmount += investment.maturityAmount;
       user.investmentBalance -= investment.amount;
 
       // Update the investment status to 'Ended'
