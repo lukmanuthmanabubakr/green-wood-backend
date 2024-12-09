@@ -858,21 +858,21 @@ const updateDepositBalance = async (req, res) => {
     }
 
     // Ensure balance is a number
-    user.balance = Number(user.balance);
+    user.totalMaturityAmount = Number(user.totalMaturityAmount);
 
     if (operation === "add") {
-      user.balance += Number(amount);
+      user.totalMaturityAmount += Number(amount);
     } else if (operation === "deduct") {
-      if (user.balance < amount) {
-        return res.status(400).json({ message: "Insufficient balance" });
+      if (user.totalMaturityAmount < amount) {
+        return res.status(400).json({ message: "Insufficient Total-profit" });
       }
-      user.balance -= Number(amount);
+      user.totalMaturityAmount -= Number(amount);
     } else {
       return res.status(400).json({ message: "Invalid operation" });
     }
 
     await user.save();
-    res.json({ message: "Balance updated successfully", updatedUser: user });
+    res.json({ message: "Total-profit updated successfully", updatedUser: user });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
