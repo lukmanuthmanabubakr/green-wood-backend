@@ -12,13 +12,13 @@ const sendEmail = async (
   amount,
   status,
   transactionId,
-  plan, // Ensure this is included
-  startDate
+  plan,
+  startDate,
+  kycStatus
 ) => {
   try {
     // Dynamically import nodemailer-express-handlebars
     const hbs = (await import("nodemailer-express-handlebars")).default;
-
     const Handlebars = (await import("handlebars")).default; // Import Handlebars
 
     // Register the `eq` helper globally
@@ -39,7 +39,7 @@ const sendEmail = async (
       timeout: 30000,
     });
 
-    const handlearOptions = {
+    const handlebarOptions = {
       viewEngine: {
         extName: ".handlebars",
         partialsDir: path.resolve("./views"),
@@ -52,7 +52,7 @@ const sendEmail = async (
       extName: ".handlebars",
     };
 
-    transporter.use("compile", hbs(handlearOptions));
+    transporter.use("compile", hbs(handlebarOptions));
 
     // Options for sending email
     const options = {
@@ -61,13 +61,14 @@ const sendEmail = async (
       replyTo: reply_to,
       subject,
       template,
+      kycStatus,
       context: {
         name,
         link,
         amount,
         status,
         transactionId,
-        plan, // Ensure this is included
+        plan,
         startDate,
       },
     };

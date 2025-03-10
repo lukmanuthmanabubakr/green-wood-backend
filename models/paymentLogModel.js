@@ -13,24 +13,24 @@ const paymentLogSchema = mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["pending", "confirmed", "failed"], // Status of the payment
+      enum: ["pending", "confirmed", "rejected"], // Status of the payment
       default: "pending", // Default status is pending
     },
     adminConfirmation: {
       type: Boolean,
-      default: false, // Whether the admin has confirmed the payment
+      default: false, // Whether the admin has confirmed the payment.
     },
     paymentDate: {
       type: Date,
-      default: Date.now, // Automatically set the payment date
+      default: Date.now, // Automatically set the payment date.
     },
     notes: {
       type: String,
-      default: "", // Optional field for any additional notes
+      default: "", // Optional field for any additional notes.
     },
   },
   {
-    timestamps: true, // Adds createdAt and updatedAt fields
+    timestamps: true, // Adds createdAt and updatedAt fields.
     minimize: false,
   }
 );

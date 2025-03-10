@@ -28,7 +28,10 @@ const userSchema = mongoose.Schema(
     },
     phone: {
       type: String,
-      default: "+1",
+      required: [true, "Please add a phone number"],
+      unique: true,
+      trim: true,
+      match: [/^\+?[1-9]\d{1,14}$/, "Please enter a valid phone number"],
     },
     bio: {
       type: String,
@@ -38,7 +41,6 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
       default: "subscriber",
-      // subscriber, author, admin (suspended)
     },
     isVerified: {
       type: Boolean,
@@ -49,10 +51,30 @@ const userSchema = mongoose.Schema(
       required: true,
       default: [],
     },
+    country: {
+      type: String,
+      required: [true, "Please select a country"],
+      default: "Unknown"
+    },
     balance: {
       type: Number,
-      default: 0, // start balance at 0 for new users
+      default: 0,
     },
+    kycStatus: {
+      type: String,
+      enum: ['Not Submitted', 'Pending', 'Approved', 'Rejected'],
+      default: 'Not Submitted', // Default status when user registers
+    },
+    kyc: {
+      frontDoc: { type: String }, // Path to front document
+      backDoc: { type: String }, // Path to back document
+      status: {
+        type: String,
+        enum: ["Pending", "Approved", "Rejected"],
+        default: "Pending", // Default KYC status after submission
+      },
+    },
+    isImpersonated: { type: Boolean, default: false },
     referralCode: { type: String, unique: true },
     referredBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     referrals: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
@@ -69,7 +91,7 @@ const userSchema = mongoose.Schema(
   }
 );
 
-// Encrypt password before saving to DB
+// Middleware to hash password before saving user
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     return next();

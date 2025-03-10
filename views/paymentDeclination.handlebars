@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Payment Confirmation</title>
+    <title>Payment Declined</title>
   </head>
   <body>
     <div>
@@ -12,10 +12,14 @@
       </div>
       <h2>Hello {{name}}</h2>
 
-      <p>We are pleased to inform you that your payment of ${{amount}} has been successfully processed.</p>
-
-      <p>Status: {{status}}</p>
+      <p>We regret to inform you that your payment of ${{amount}} has been declined.</p>
+      <p>Please contact support for more information.</p>
+      <p>For further assistance or inquiries, please feel free to contact our support team.</p>
       <p>Transaction ID: {{transactionId}}</p>
+
+      <div>
+        <a href="https://www.greenwoodsy.com/contact">Contact Support</a>
+      </div>
 
       <div>
         <p>Regards...</p>
