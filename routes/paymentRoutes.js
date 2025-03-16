@@ -11,7 +11,6 @@ const {
   protect,
   adminOnly,
   verifiedOnly,
-  kycApprovedOnly,
 } = require("../middleware/authMiddleware");
 
 // Route to create a transaction (user submits a payment);
@@ -19,7 +18,6 @@ router.post(
   "/create",
   protect,
   verifiedOnly,
-  kycApprovedOnly,
   createTransaction
 );
 

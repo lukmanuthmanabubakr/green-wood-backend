@@ -57,7 +57,7 @@ router.patch("/resetPassword/:resetToken", resetPassword);
 router.patch("/changePassword", protect, changePassword);
 router.post("/sendLoginCode/:email", sendLoginCode);
 router.post("/loginWithCode/:email", loginWithCode);
-router.get("/dashboard", protect, verifiedOnly, kycApprovedOnly, getUserTransactions);
+router.get("/dashboard", protect, verifiedOnly, getUserTransactions);
 router.post("/impersonate/:userId", protect, adminOnly, impersonateUser);
 router.post("/exit-impersonation", protect, exitImpersonation);
 
