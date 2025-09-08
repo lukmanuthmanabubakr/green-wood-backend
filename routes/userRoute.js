@@ -26,6 +26,7 @@ const {
   getPendingKycRequests,
   approveKycRequest,
   rejectKycRequest,
+  editInvestmentBalance,
 } = require("../controllers/userController");
 const {
   protect,
@@ -65,6 +66,7 @@ router.get("/referrals", protect, getReferrals);
 //For admin to be able to edit user investmentbalance 
 router.put("/updateDepositBalance/:id", protect, authorOnly, updateDepositBalance); //Total profit
 router.put("/editDepositBalance/:id", protect, authorOnly, editDepositBalance); //balance
+router.put("/editinvestmentBalance/:id", protect, authorOnly, editInvestmentBalance); //balance
 
 
 
