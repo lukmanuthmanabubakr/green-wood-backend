@@ -147,7 +147,7 @@ const getReferrals = asyncHandler(async (req, res) => {
 });
 
 //To Login User
-// const loginUser = asyncHandler(async (req, res) => {
+// const  = asyncHandler(async (req, res) => {
 //   const { email, password } = req.body;
 
 //   //   Validation
