@@ -165,7 +165,7 @@ const getReferrals = asyncHandler(async (req, res) => {
 
 //   const passwordIsCorrect = await bcrypt.compare(password, user.password);
 
-//   if (!passwordIsCorrect) {
+//   if ) {
 //     res.status(400);
 //     throw new Error("Invalid email or password");
 //   }
