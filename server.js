@@ -30,6 +30,7 @@ app.use(
     origin: [
       "https://greenwoodsy.com",
       "http://localhost:3000",
+      "http://localhost:8000",
       "https://api.greenwoodsy.com",
     ],
     credentials: true, // ✅ Allows sending cookies with requests
