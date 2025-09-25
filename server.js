@@ -15,7 +15,7 @@ const countriesRoutes = require("./routes/countriesRoutes");
 
 const app = express();
 
-// ✅ Trust proxy for secure cookies
+// ✅ Set trust proxy for secure cookies in production
 app.set("trust proxy", 1);
 
 // ✅ Middlewares
@@ -24,23 +24,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(bodyParser.json());
 
-// ✅ CORS Setup with main + api domains + local dev
+// ✅ CORS Setup to allow cookies
 app.use(
   cors({
     origin: [
-      "https://greenwoodsy.com",     // main site
-      "https://api.greenwoodsy.com", // API subdomain
-      "http://localhost:3000",       // frontend dev
-      "http://localhost:8000",       // backend dev
+      "https://www.greenwoodsy.com",
+      "https://greenwoodsy.com",
+      "http://localhost:3000",
+      "http://localhost:8000",
+      "https://api.greenwoodsy.com",
     ],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+    credentials: true, // ✅ Allows sending cookies with requests
   })
 );
-
-// ✅ Handle preflight
-app.options(/.*/, cors());
 
 // ✅ Routes
 app.use("/api/users", userRoute);
@@ -49,9 +45,8 @@ app.use("/api/invest", investmentRoutes);
 app.use("/api/withDraw", withDrawRoutes);
 app.use("/api", countriesRoutes);
 
-// ✅ Default route
 app.get("/", (req, res) => {
-  res.send("✅ API is running on Greenwoodsy server");
+  res.send("Home Page");
 });
 
 // ✅ Error Handler
@@ -59,17 +54,17 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 8000;
 
-// ✅ Connect DB + Seed
+// ✅ Connect to database and seed plans
 mongoose
   .connect(process.env.MONGO_DB_URL)
   .then(async () => {
     console.log("✅ Database connected");
 
-    // Seed plans if not exists
+    // ✅ Seed investment plans if they don't exist
     await seedPlans();
 
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
+      console.log(`🚀 Server running on ${PORT}`);
     });
   })
   .catch((err) => console.error("❌ Database connection error:", err));
